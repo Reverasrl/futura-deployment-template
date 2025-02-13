@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   futura:
     image: pelpsi/futura-frontend 
@@ -7,6 +5,7 @@ services:
     container_name: futura-frontend
     environment:
       - NODE_ENV=production
+      - NEXTAUTH_SECRET=
     ports:
       - "3000:3000"
     depends_on:
