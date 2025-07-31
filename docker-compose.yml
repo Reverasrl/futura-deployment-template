@@ -1,20 +1,24 @@
 services:
   futura:
-    image: pelpsi/futura-frontend 
+    image: pelpsi/futura-frontend:latest
+    pull_policy: always
     restart: always
     container_name: futura-frontend
     environment:
       - NODE_ENV=production
       - NEXTAUTH_URL=http://127.0.0.1:3000
+      - NEXT_PUBLIC_NEXTAUTH_URL=http://127.0.0.1:3000
       - BACKEND_URL=futura-backend:8080
-      - NEXTAUTH_SECRET=
+      - NEXT_PUBLIC_BACKEND_URL=futura-backend:8080
+      - NEXTAUTH_SECRET="NnIMaVFHUEF3ESmy2reBV35W8MhdqtCpqwbWHJA9Ses="
     ports:
       - "3000:3000"
     depends_on:
       - futura-backend
 
   futura-backend:
-    image: pelpsi/futura-backend
+    image: pelpsi/futura-backend:latest
+    pull_policy: always
     restart: always
     container_name: futura-backend
     volumes:
